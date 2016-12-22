@@ -1,4 +1,6 @@
 import React from 'react';
+import Header from './Header';
+import Content from './Content';
 
 class App extends React.Component {
   sayHey() {
@@ -15,15 +17,20 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Hello Hoonja!</h1>
-        <h2>Welcome to {text}</h2>
-        <button onClick={this.sayHey}>Click Me</button>
-        <p style={pStyle}>
-          { NaN == NaN ? 'True' : 'False'}
-        </p>
+        <Header title={this.props.headerTitle}/>
+        <Content
+          title={this.props.contentTitle}
+          body={this.props.contentBody}
+          />
       </div>
     );
   }
+}
+
+App.defaultProps = {
+  headerTitle: 'Header not yet',
+  contentTitle: 'Content not yet',
+  contentBody: 'Body not yet'
 }
 
 export default App;
