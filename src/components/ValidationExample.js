@@ -15,7 +15,20 @@ const propTypes = {
   optionalUnion: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.number
-  ])
+  ]),
+  optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),
+  optionalObjectOf: React.PropTypes.objectOf(React.PropTypes.number),
+  optionalObjectWithShape: React.PropTypes.shape({
+    color: React.PropTypes.string,
+    fontSize: React.PropTypes.number
+  }),
+  requiredFunc: React.PropTypes.func.isRequired,
+  requiredAny: React.PropTypes.any.isRequired,
+  customProp: function(props, propName, componentName) {
+    if (!/matchme/.test(props[propName])) {
+      return new Error('Validation failed!');
+    }
+  }
 };
 
 const defaultProps = {
